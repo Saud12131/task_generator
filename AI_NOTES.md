@@ -2,19 +2,7 @@
 
 This project was developed using AI assistance, but all code was reviewed, debugged, and adapted manually to ensure correctness and understanding.
 
----
 
-## LLM Provider
-
-**Provider:** Azure OpenAI  
-**Model Deployment:** gpt-35-turbo  
-**Reason for choosing:**
-- Fast and low cost
-- Good structured text generation
-- Stable JSON-like outputs after prompt tuning
-- Available in Azure student subscription
-
----
 
 ## Where AI Was Used
 
