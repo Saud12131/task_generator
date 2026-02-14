@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Task Generator – Mini Planning Tool
 
-## Getting Started
+A web application that generates structured feature plans using Azure OpenAI.
 
-First, run the development server:
+Users can:
+- Describe a feature idea
+- Generate user stories, engineering tasks, and risks
+- Edit and reorder tasks
+- Export the result as Markdown
+- View the last 5 generated plans
+- Check system health via a status page
+
+---
+
+## 🚀 Live Demo
+
+[Add your live link here]
+
+---
+
+## 🧠 Tech Stack
+
+- **Next.js 16 (App Router)**
+- **TypeScript**
+- **MongoDB**
+- **Azure OpenAI (gpt-35-turbo)**
+- **dnd-kit** (for drag-and-drop reordering)
+
+---
+
+## ✨ Features Implemented
+
+### 1. Plan Generation
+- User fills a form with:
+  - Goal
+  - Target users
+  - Platform type
+  - Constraints
+- Azure OpenAI generates:
+  - User stories
+  - Engineering tasks
+  - Risks
+
+### 2. Editing
+- Inline editing of:
+  - User stories
+  - Tasks
+  - Risks
+- Changes are saved to MongoDB instantly.
+
+### 3. Reordering Tasks
+- Drag-and-drop reordering using dnd-kit.
+- Order persists after refresh.
+
+### 4. Export
+- Copy as Markdown
+- Download `.md` file
+
+### 5. Recent Plans
+- Home page shows the last 5 generated plans.
+- Click to reopen any previous spec.
+
+### 6. System Status Page
+Accessible at `/status`.
+
+Shows:
+- Backend API health
+- Database connectivity
+- Azure OpenAI connection
+
+---
+
+## 🛠 How to Run Locally
+
+### 1. Clone the repo
 
 ```bash
+git clone <your-repo-url>
+cd <project-folder>
+
+2. Install dependencies
+npm install
+
+3. Create .env.local
+
+Copy .env.example:
+
+cp .env.example .env.local
+
+
+Fill in:
+MONGODB_URI=
+MONGODB_DB=
+
+AZURE_OPENAI_ENDPOINT=
+AZURE_OPENAI_API_KEY=
+AZURE_OPENAI_DEPLOYMENT=gpt-35-turbo
+AZURE_OPENAI_API_VERSION=2024-04-01-preview
+
+
+4. Run the app
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+http://localhost:3000
 
-## Learn More
+📦 Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+See .env.example.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+No API keys are stored in the repository.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🧩 Design Decisions
 
-## Deploy on Vercel
+Tasks are stored as string[] for simplicity.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Reordering updates array order directly.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Grouping feature was intentionally not implemented to keep schema minimal.
+
+Status page performs real connectivity checks instead of static responses.
+
+⚠️ Not Implemented
+
+Task grouping (skipped intentionally for schema simplicity)
